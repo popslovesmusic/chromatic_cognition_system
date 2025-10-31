@@ -1,0 +1,40 @@
+[package]
+name = "chromatic_core"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "Chromatic Semantic Archive - Core cognitive system with Dream Pool and spectral analysis"
+
+[dependencies]
+# Shared library with CSI
+chromatic_shared = { path = "../chromatic_shared" }
+lazy_static = "1.5"
+
+# Workspace dependencies
+ndarray = { workspace = true }
+rayon = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+toml = { workspace = true }
+plotters = { workspace = true }
+rand = { workspace = true }
+anyhow = { workspace = true }
+rustfft = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+lru = { workspace = true }
+hnsw_rs = { workspace = true }
+tracing = { workspace = true }
+wgpu = { workspace = true }
+bytemuck = { workspace = true }
+half = { workspace = true }
+
+[dev-dependencies]
+serde_json = "1"
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "dream_benchmarks"
+harness = false

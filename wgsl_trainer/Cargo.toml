@@ -1,0 +1,60 @@
+[package]
+name = "wgsl_trainer"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description = "WGSL shader generator - trains models to produce chromatic operations"
+keywords = ["wgsl", "shader", "ai", "ml", "gpu"]
+categories = ["machine-learning", "graphics", "command-line-utilities"]
+
+[lib]
+name = "wgsl_trainer"
+path = "src/lib.rs"
+
+[[bin]]
+name = "wgsl-trainer"
+path = "src/main.rs"
+
+[dependencies]
+# Shared library with CSI
+chromatic_shared = { path = "../chromatic_shared" }
+
+# Core tensor operations
+ndarray = { workspace = true }
+ndarray-rand = { workspace = true }
+
+# GPU and WGSL support
+wgpu = { workspace = true }
+naga = { workspace = true }
+
+# Parallelization
+rayon = { workspace = true }
+
+# Serialization
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = { workspace = true }
+bincode = { workspace = true }
+
+# CLI
+clap = { workspace = true }
+
+# Logging
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+# Tokenization
+regex = { workspace = true }
+unicode-segmentation = { workspace = true }
+
+# Utilities
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+rand = { workspace = true }
+rand_chacha = { workspace = true }
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.4"
+tempfile = "3.8"

@@ -1,0 +1,12 @@
+# Rust build artifacts
+/target/
+/out/
+/logs/
+/release/
+
+# Backup files
+**/*.rs.bk
+
+# OS-specific
+.DS_Store
+Thumbs.db

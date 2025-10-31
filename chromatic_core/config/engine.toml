@@ -1,0 +1,101 @@
+[engine]
+rows = 64
+cols = 64
+layers = 8
+seed = 42
+device = "cpu"
+
+[environment]
+default = "production"
+available = ["production", "staging", "development"]
+
+[environment.production]
+debug = false
+log_level = "info"
+metrics_enabled = true
+persist_state = true
+telemetry_endpoint = "https://telemetry.chromatic.example/prod"
+
+[environment.production.logging]
+format = "json"
+rotation = "daily"
+max_files = 14
+
+[environment.staging]
+debug = true
+log_level = "debug"
+metrics_enabled = true
+persist_state = false
+telemetry_endpoint = "https://telemetry.chromatic.example/stage"
+
+[environment.staging.logging]
+format = "json"
+rotation = "daily"
+max_files = 7
+
+[environment.development]
+debug = true
+log_level = "debug"
+metrics_enabled = false
+persist_state = false
+telemetry_endpoint = "http://localhost:4317"
+
+[environment.development.logging]
+format = "pretty"
+rotation = "never"
+max_files = 0
+
+[phase4]
+embed_dim = 64
+similarity = "cosine"
+alpha = 0.65
+beta = 0.20
+gamma = 0.10
+delta = 0.05
+mmr_lambda = 0.7
+refresh_interval_steps = 500
+drift_threshold = 0.08
+
+[p5a]
+predict_horizon = 2
+features = ["coherence", "entropy", "grad_energy"]
+
+[p5b]
+dissonance_threshold = 0.25
+actions = ["SeedFrom", "DampLR", "CoolTint", "PauseAug"]
+
+[p5b.weights]
+coherence = 0.5
+entropy = 0.3
+energy = 0.2
+
+[p5c]
+lr_damp_max = 0.5
+cool_tint_max = 0.2
+pause_aug_max_steps = 200
+ethics_hue_jump_deg = 90
+log_every = 1
+
+[p6b]
+trend_window = 20
+trend_drift_limit = 0.03
+oscillation_limit = 0.15
+
+[p6c]
+cycle_interval = 10
+lr_adjust_max = 0.2
+dream_pool_expand_max = 50
+trend_anomaly_cooldown = 5
+
+[p6d]
+loss_slope_limit = 0.03
+entropy_drift_limit = 0.03
+coherence_decay_limit = 0.02
+oscillation_index_limit = 0.1
+action_delay = 2
+
+[p6d.risk_weight]
+loss = 0.4
+entropy = 0.3
+coherence = 0.2
+oscillation = 0.1
