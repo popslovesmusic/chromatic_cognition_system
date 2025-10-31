@@ -78,3 +78,6 @@ debug = true
 
 [profile.bench]
 inherits = "release"
+
+[patch.crates-io]
+tracing = { path = "chromatic_core/vendor/tracing_stub" }
